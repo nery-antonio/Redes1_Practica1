@@ -1,66 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Sample Site</title>
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            padding-top: 50px;
-        }
-    </style>
+    <script>
+        fetch('https://www.raydelto.org/json.php')
+        .then((respuesta) => {
+            return respuesta.json();
+        } ).then((respuesta) => {
+            document.getElementById('nombre').value = respuesta.name;
+            document.getElementById('apellido').value = respuesta.lastName;
+        })
+    </script>
 </head>
 
 <body>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Practica Redes 1</h1>
-            <h2>Departamento: Contabilidad</h2>
-            <h3>Grupo 10</h3>
-            <h4>
-                201602986 Nery Antonio Alvizures S. <br>
-                201403905 Javier Alberto Cabrera Puente<br>
-                201602723 Diego Alejandro Caballeros Melchor<br>
-                201602907 Bryan Moises Gonzalez Fuentes<br>
-            </h4>
-        </div>
+    <div id="informacion">
+        <input type="text" id="nombre" value="Cargando..."/>
+        <input type="text" id="apellido" value="Cargando..."/>
     </div>
-    <div class="container">
-        <h2 id="redes-multipunto">Redes Multipunto</h2>
-        <p><img src="https://i.pinimg.com/originals/8d/96/25/8d962582247234c292de81f04ee8ca64.gif" alt="image"></p>
-        <p>Las redes multipunto son redes de computadoras en las cuales cada canal de datos se puede usar para
-            comunicarse con diversos nodos.</p>
-        <p>En una red multipunto solo existe una línea de comunicación cuyo uso está compartido por todas las terminales
-            en la red. La información fluye de forma bidireccional y es discernible para todas las terminales de la red.
-        </p>
-        <p>En este tipo de redes, las terminales compiten por el uso del medio, de forma que el primero que lo encuentra
-            disponible lo acapara, aunque también puede negociar su uso. En términos más sencillos: permite la unión de
-            varios terminales a su computadora compartiendo la única línea de transmisión, su principal ventaja consiste
-            en el abaratamiento de costos, aunque puede perder velocidad y seguridad.</p>
-        <h3 id="caracteristicas-">Caracteristicas:</h3>
-        <ul>
-            <li>En una red multipunto sólo existe una línea de comunicación, cuyo uso está compartido por todas las
-                terminales en la red.</li>
-            <li>La información fluye de forma bidireccional y es discernible para todas las terminales de la red. Lo
-                típico es que en una conexión multipunto las terminales compiten por el uso del medio (línea) de forma
-                que el primero que lo encuentra disponible lo acapara, aunque también puede negociar su uso.</li>
-            <li>Los terminales no tienen que estar necesariamente próximos geográficamente.
-                Tienen un acceso común a la computadora central por medio de una línea a la que están conectados, y que
-                por tanto soporta todo el tráfico de la información.</li>
-            <li>Cada terminal debe poder detectar si el mensaje que envía el host le afecta o no. Para ello, cada
-                mensaje llevará la dirección del terminal al que va dirigido.</li>
-            <li>Su método de acceso al medio es el Polling: técnica por la cual la computadora central hace una pasada
-                por todos los terminales para saber si tienen información a enviar o están disponibles para recibirla.
-            </li>
-        </ul>
-
-
-    </div>
-
-
 </body>
-
 </html>
