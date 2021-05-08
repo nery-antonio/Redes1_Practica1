@@ -1,19 +1,19 @@
 const cors = require("cors");
 const express = require("express");
 var bodyParser = require('body-parser')
-var app = express();
 
 
 const app = express().use(cors());
 var jsonParser = bodyParser.json()
 
+const db_pool = require('./database');
 // viewed at http://localhost:3000
 
-app.get('/libros', jsonParser, async function (req, res) {
-    const libros = await db_pool.query(`SELECT * FROM libro;`);
+app.get('/producto', jsonParser, async function (req, res) {
+    const producto = await db_pool.query(`SELECT * FROM producto;`);
     response = {
         code: 200,
-        data: libros
+        data: producto
     }
     res.send(response)
 });
