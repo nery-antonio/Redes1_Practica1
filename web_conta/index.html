@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script>
+        fetch('http://localhost:3000/ventas')
+            .then((respuesta) => {
+                return respuesta.json()
+
+            }).then((respuesta) => {
+                console.log(respuesta)
+
+                var outputHTML = "";
+                for (var i = 0; i < respuesta.data.length; i++) { // i for the rows
+                    var newRow = "<tr>";
+                        newRow += "<td>" + respuesta.data[i].vendedor + "</td>";
+                        newRow += "<td>" + respuesta.data[i].fecha + "</td>";
+                        newRow += "<td>" + respuesta.data[i].producto + "</td>";
+                    
+                    outputHTML += newRow + "</tr>";
+                    
+                }
+                console.log(outputHTML)
+                document.getElementById("table").innerHTML += outputHTML;
+            })
+    </script>
+</head>
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+<body>
+    <h1>Listado de Ventas:</h1>
+    <table id="table">
+        <tbody>
+          <tr>
+              <th>vendedor</th>
+              <th>fecha</th>
+              <th>producto</th>
+          </tr>
+        </tbody>
+      </table>
+</body>
+
+</html>

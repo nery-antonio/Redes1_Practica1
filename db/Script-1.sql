@@ -35,3 +35,13 @@ VALUES
 ('3344090939751','Blake','Lynn',"'345-9097 Eros St.",'9424-7748'),
 ('9962793495920','Fiona','Erickson',"4991 Sem St.",'1990-2615'),
 ('8129151710374','Iris','Pace','Ap #853-5704 Pellentesque St.',"1688-7429");
+
+INSERT INTO venta(id_vendedor, fecha, producto)
+VALUES 
+(8, '02-03-2021','Anna Karenina' ),
+(9, '04-07-2020','Hunger Games' ),
+(10, '02-08-2020','The Great Gatsby' ),
+(11, '02-04-2021','Harry Potter' ),
+(12, '08-02-2021','A Passage to India' ),
+(13, '07-09-2020','Invisible Man' ),
+(14, '01-03-2021','Don Quixote' );

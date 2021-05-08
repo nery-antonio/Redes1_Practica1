@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <script>
+        fetch('http://localhost:3000/producto')
+            .then((respuesta) => {
+                return respuesta.json()
+
+            }).then((respuesta) => {
+                console.log(respuesta)
+
+                var outputHTML = "";
+                for (var i = 0; i < respuesta.data.length; i++) { // i for the rows
+                    var newRow = "<tr>";
+                        newRow += "<td>" + respuesta.data[i].nombre_producto + "</td>";
+                        newRow += "<td>" + respuesta.data[i].autor + "</td>";
+                    
+                    outputHTML += newRow + "</tr>";
+                    
+                }
+                console.log(outputHTML)
+                document.getElementById("table").innerHTML += outputHTML;
+            })
+    </script>
+   
+</head>
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+</style>
+<body>
+    <h1>Listado de Productos:</h1>
+    <table id="table">
+        <tbody>
+          <tr>
+              <th>Nombre Producto</th>
+              <th>Autor</th>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Nuevo Producto</h3>
+      <p>Nombre del Producto:</p>
+      <input type="text" id="nombre"></input>
+      <p>Autor</p>
+      <input type="text" id="autor"></input>
+
+      <button onclick="addProduct()">Agregar Producto</button>
+      <script>
+
+        function addProduct(){
+            var producto = document.getElementById("nombre").value
+            var autor = document.getElementById("autor").value
+
+            const nuevo_producto = {
+                nombre :producto,
+                autor : autor
+            }
+
+            console.log(producto, autor)
+            fetch('http://localhost:3000/producto',{
+                method:'POST',
+                body:JSON.stringify( nuevo_producto ),
+                headers:{
+                    "Content-type": "application/json",
+                    "Access-Control-Allow-Origin":"*"
+                }
+
+            })
+            .then((respuesta) => {
+                return respuesta.json()
+
+            }).then((respuesta) => {
+                console.log(respuesta)
+            })
+        
+    }
+
+    </script>
+</body>
+
+</html>
